@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Application Form</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -15,12 +15,9 @@
         }
 
         body {
-            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLyZyeq-Sfj3_7fSZRvcMrWNFsKDTKkBlDHQ&s);
-            /* Replace with the actual image URL */
-            background-size: cover;
+            /*background-image: url(https://img.freepik.com/premium-photo/gradient-blue-green-colored-horizontal-stripes-abstract-backdrop_76000-5826.jpg);*/
             background-repeat: no-repeat;
             background-attachment: fixed;
-            background-position: center;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -33,12 +30,8 @@
             align-items: center;
             width: 100%;
             max-width: 1200px;
-            background-image: url(https://ndrmf.pk/wp-content/uploads/2024/10/Banner-1-1024x517.webp);
-            background-color: rgba(76, 175, 80, 0.8);
-            /* Semi-transparent background */
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
+            /*background-image: url(https://ndrmf.pk/wp-content/uploads/2024/10/Banner-1-1024x517.webp);*/
+            background-color: white;
             padding: 15px 20px;
             color: white;
             margin-top: 20px;
@@ -52,24 +45,23 @@
             /* Bigger logo size */
             height: auto;
             margin-right: 100px;
-            animation: slideInLeft 1s ease forwards;
         }
 
         /* Banner text styling with custom font and larger size */
         .header-container .banner {
-            font-size: 2em;
+
+            font-size: 3em;
             font-weight: bold;
-            flex-grow: 1;
-            text-align: left;
+
+            text-align: center;
             font-family: 'Roboto Slab', serif;
             /* Updated font style */
-            color: white;
+            color: black;
             /* Ensures text color is white */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            animation: fadeInUp 1.2s ease forwards;
         }
 
-        /* Keyframes for animations */
+        /* Keyframes for animations 
         @keyframes slideInLeft {
             0% {
                 transform: translateX(-50%);
@@ -92,36 +84,45 @@
                 transform: translateY(0);
                 opacity: 1;
             }
-        }
+        }*/
 
         /* Wrapper and main form container */
         /* Main form container */
         .form-container {
             max-width: 800px;
             width: 100%;
+            height: 100%;
             margin: 20px auto;
             padding: 20px;
-            background-color: rgba(76, 175, 80, 0.3);
-            /* Green background with 30% opacity */
+            background-color: lightblue;
             border-radius: 8px;
+            text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
+        /*progressbar*/
         .progress {
-            position: relative;
             margin-bottom: 30px;
+            position: relative;
+
         }
 
-        #progress-bar {
+        #progressbar .active {
+            color: black;
+        }
+
+        /*#progressB {
             position: absolute;
-            background: green;
+            background: blue;
             height: 5px;
+            top: 25%;
             width: 0%;
-            top: 50%;
             left: 0;
-        }
+            transition: width 0.3s ease;
+            transform: translateY(-50%);
+        }*/
 
-        #progress-num {
+        #progressbar {
             margin: 0;
             padding: 0;
             list-style: none;
@@ -129,35 +130,71 @@
             justify-content: space-between;
         }
 
-        #progress-num::before {
+        #progressbar li {
+            list-style-type: none;
+            font-size: 12px;
+            width: 25%;
+            float: left;
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+
+        /*Icons in the ProgressBar*/
+        #progressbar #info:before {
+            font-family: FontAwesome;
+            content: "\f007";
+        }
+
+        #progressbar #education:before {
+            font-family: FontAwesome;
+            content: "\f501";
+        }
+
+        #progressbar #experience:before {
+            font-family: FontAwesome;
+            content: "\f0b1";
+        }
+
+        #progressbar #upload:before {
+            font-family: FontAwesome;
+            content: "\f574";
+        }
+
+        /*ProgressBar before any progress*/
+        #progressbar li::before {
+
+            width: 50px;
+            height: 50px;
+            line-height: 45px;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            color: #ffffff;
+            background: gray;
+            border-radius: 50%;
+            margin: 0 auto 10px auto;
+            padding: 2px;
+        }
+
+        /*ProgressBar connectors*/
+        #progressbar li::after {
             content: "";
-            background-color: skyblue;
-            position: absolute;
-            top: 50%;
-            left: 0;
-            height: 5px;
             width: 100%;
+            height: 2px;
+            background: grey;
+            position: absolute;
+            left: 0;
+            top: 35%;
+            /*transform: translateX(-50%);*/
             z-index: -1;
         }
 
-        #progress-num .circle {
-            border: 3px solid skyblue;
-            border-radius: 100%;
-            width: 25px;
-            height: 25px;
-            line-height: 25px;
-            text-align: center;
-            background-color: skyblue;
-            font-family: sans-serif;
-            font-size: 14px;
-            position: relative;
-            z-index: 1;
-        }
-
-        #progress-num .circle.active {
-            border-color: green;
-            background-color: green;
-            color: #fff;
+        /*Color number of the step and the connector before it*/
+        #progressbar li.active::before,
+        #progressbar li.active::after {
+            background: blue;
         }
 
         /* Form step styles */
@@ -171,8 +208,9 @@
 
         .form-header {
             font-size: 1.5em;
+            font-weight: bold;
             margin-bottom: 10px;
-            color: #333;
+            color: black;
         }
 
         .form-row {
@@ -188,17 +226,16 @@
         }
 
         .input-data input {
-            display: block;
+
             width: 100%;
             height: 100%;
             border: none;
             background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 0px;
             /* Updated to a semi-transparent white for better contrast */
             color: black;
             font-size: 17px;
-            border-bottom: 2px solid black;
-            padding-left: 5px;
-            /* Optional padding for better readability */
+            border-bottom: 2px solid skyblue;
         }
 
         label {
@@ -208,17 +245,20 @@
             font-weight: bold;
         }
 
-        .input-data input:focus~label,
-        .input-data input:valid~label {
-            transform: translateY(-20px);
-            font-size: 14px;
-            color: black;
+        .input-data input:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            border: none;
+            font-weight: bold;
+            border-bottom: 2px solid blue;
+            outline-width: 0;
         }
 
-        /*.textarea textarea {
-            resize: none;
-            padding-top: 10px;
-        }*/
+        ::placeholder {
+            color: black;
+            opacity: 1;
+        }
 
         .input-data label {
             position: absolute;
@@ -234,32 +274,32 @@
             background: #fff;
         }*/
 
-        .input-data .underline {
+        /*.input-data .underline {
             position: absolute;
             bottom: 0;
             height: 2px;
             width: 100%;
         }
 
-        .input-data .underline:before {
+        .input-data .underline::before {
             position: absolute;
             content: "";
             height: 2px;
             width: 100%;
-            background: black;
+            background: blue;
             transform: scaleX(0);
             transform-origin: center;
             transition: transform 0.3s ease;
-        }
+        }*/
 
-        .input-data input:focus~.underline:before,
-        .input-data input:valid~.underline:before
+        /*.input-data input:focus~.underline::before,
+        .input-data input:valid~.underline::before
 
         /*.textarea textarea:focus~.underline:before,
-        .textarea textarea:valid~.underline:before*/
+        .textarea textarea:valid~.underline:before
             {
             transform: scale(1);
-        }
+        }*/
 
         /* Button styles */
         .button-container {
@@ -290,7 +330,7 @@
 
         /* Plus (+) button */
         .plus-btn {
-            background-color: #4caf50;
+            background-color: blue;
             color: white;
             padding: 5px 10px;
             border-radius: 50%;
@@ -326,7 +366,14 @@
 
         .message {
             text-align: center;
+            justify-content: center;
             display: none;
+        }
+
+        /*Fit image in bootstrap div*/
+        .fit-image {
+            width: 20%;
+            object-fit: cover;
         }
     </style>
 </head>
@@ -337,7 +384,7 @@
     <div class="header-container">
         <!-- Logo Container -->
         <div class="logo-container">
-            <img src="NDRMF Logo.jpg">
+            <img src="NDRMF Logo.jpg" alt="logo">
         </div>
 
         <!-- Banner -->
@@ -349,51 +396,44 @@
     <!-- Form Container -->
     <div class="form-container">
         <div class="progress">
-            <div id="progress-bar"></div>
-            <ul id="progress-num">
-                <li class="circle active">1</li>
-                <li class="circle">2</li>
-                <li class="circle">3</li>
-                <li class="circle">4</li>
+            <div id="progressB"></div>
+            <ul id="progressbar">
+                <li class="item active" id="info"><strong>Personal</strong></li>
+                <li class="item" id="education"><strong>Education</strong></li>
+                <li class="item" id="experience"><strong>Experience</strong></li>
+                <li class="item" id="upload"><strong>Upload</strong></li>
             </ul>
         </div>
 
-
         <!-- Form Steps -->
         <form id="jobApplicationForm" action="/upload" method="post" enctype="multipart/form-data">
-
             <!-- Step 1: Personal Information -->
             <div class="step active">
                 <div class="form-header">Personal Information</div>
                 <div class="form-row">
                     <div class="input-data">
-                        <input type="text" required>
-                        <div class="underline"></div>
-                        <label for="">First Name</label>
+                        <input type="text" placeholder="First Name" required>
+                        <label for=""></label>
                     </div>
                     <div class="input-data">
-                        <input type="text" required>
-                        <div class="underline"></div>
-                        <label for="">Last Name</label>
+                        <input type="text" placeholder="Last Name" required>
+                        <label for=""></label>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="input-data">
-                        <input type="text" required>
-                        <div class="underline"></div>
-                        <label for="">CNIC #</label>
+                        <input type="text" placeholder="CNIC #" required>
+                        <label for=""></label>
                     </div>
                     <div class="input-data">
-                        <input type="text" required>
-                        <div class="underline"></div>
-                        <label for="">Contact no.</label>
+                        <input type="text" placeholder="Contact no." required>
+                        <label for=""></label>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="input-data">
-                        <input type="text" required>
-                        <div class="underline"></div>
-                        <label for="">Email Address</label>
+                        <input type="text" placeholder="Email" required>
+                        <label for=""></label>
                     </div>
                 </div>
             </div>
@@ -404,58 +444,63 @@
                 <div id="educationFields">
                     <div class="form-row">
                         <div class="input-data">
-                            <input type="text" required>
-                            <div class="underline"></div>
-                            <label for="">Degree</label>
+                            <input type="text" placeholder="Degree" required>
+                            <label for=""></label>
                         </div>
                         <div class="input-data">
-                            <input type="text" required>
-                            <div class="underline"></div>
-                            <label for="">Graduation Year</label>
+                            <input type="text" placeholder="Graduation Year" required>
+                            <label for=""></label>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="input-data">
-                            <input type="text" required>
-                            <div class="underline"></div>
-                            <label for="">Major</label>
+                            <input type="text" placeholder="Major" required>
+                            <label for=""></label>
                         </div>
                     </div>
                 </div>
-                <button type="button" class="plus-btn" onclick="addEducationField()">+</button>
-
+                <div class="button-container">
+                    <button type="button" class="plus-btn" onclick="addEducationField()">+</button>
+                </div>
             </div>
 
             <!-- Step 3: Work Experience -->
             <div class="step">
+                <div class="form-header">Work Experience</div>
                 <div id="workFields">
                     <div class="form-row">
                         <div class="input-data">
-                            <input type="text" required>
-                            <div class="underline"></div>
-                            <label for="">Position</label>
+                            <input type="text" placeholder="Position" required>
+                            <label for=""></label>
                         </div>
                         <div class="input-data">
-                            <input type="text" required>
-                            <div class="underline"></div>
-                            <label for="">Company</label>
+                            <input type="text" placeholder="Company" required>
+                            <label for=""></label>
                         </div>
                         <div class="input-data">
-                            <input type="text" required>
-                            <div class="underline"></div>
-                            <label for="">Years of Experience</label>
+                            <input type="text" placeholder="Years of Experience" required>
+                            <label for=""></label>
                         </div>
                     </div>
                 </div>
-                <button type="button" class="plus-btn" onclick="addWorkField()">+</button>
+                <div class="button-container">
+                    <button type="button" class="plus-btn" onclick="addWorkField()">+</button>
+                </div>
+
             </div>
 
             <!-- Step 4: Additional Information -->
             <div class="step">
                 <div class="form-header">Upload Your Documents</div>
-                <label for="documents">Choose documents to upload:</label>
-                <input type="file" id="documents" name="documents" multiple
-                    accept=".pdf, .doc, .docx, .txt, .jpg, .png">
+                <div>
+                    <label for="documents">Choose documents to upload:</label>
+                    <input type="file" id="documents" name="documents" multiple
+                        accept=".pdf, .doc, .docx, .txt, .jpg, .png">
+                    <span id="errorMessage" style="color: blue;"></span>
+                </div>
+                <div class="button-container">
+                    <button type="button" class="btn" onclick="validateFiles()">Upload</button>
+                </div>
             </div>
 
             <!-- Navigation Buttons -->
@@ -465,30 +510,44 @@
             </div>
         </form>
         <div class="message" id="message">
-            <h2>Your Application is Submitted</h2>
-            <p>Thank You</p>
+            <h2>Success!</h2>
+            <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image">
+            <p>Your Application Is Submitted</p>
         </div>
     </div>
 
+
+    
+
+
     <script>
-        let currentStep = 0;
+        let currentStep = 0; // Tracks the current step
         const steps = document.querySelectorAll(".step");
-        const circles = document.querySelectorAll(".circle");
-        const progressBar = document.getElementById("progress-bar");
+        const progressItems = document.querySelectorAll(".item");
+        const progressBar = document.getElementById("progressB");
         const prevBtn = document.getElementById("prevBtn");
         const nextBtn = document.getElementById("nextBtn");
 
+        // Update the form UI based on the current step
         function updateForm() {
+            // Show/Hide steps
             steps.forEach((step, index) => {
                 step.classList.toggle("active", index === currentStep);
             });
+
+            // Update button states
             prevBtn.disabled = currentStep === 0;
             nextBtn.textContent = currentStep === steps.length - 1 ? "Submit" : "Next";
-            updateProgress();
+
+            // Update progress bar and steps
+            updateProgressBar();
         }
 
+        // Change the current step (forward or backward)
         function changeStep(step) {
             currentStep = Math.min(Math.max(currentStep + step, 0), steps.length - 1);
+
+            // Handle form submission on the last step
             if (currentStep === steps.length - 1) {
                 nextBtn.onclick = submitForm;
             } else {
@@ -497,31 +556,74 @@
             updateForm();
         }
 
-
-        function updateProgress() {
-            circles.forEach((circle, i) => {
-                circle.classList.toggle("active", i <= currentStep);
+        // Update the progress bar
+        function updateProgressBar() {
+            // Update active classes on progress items
+            progressItems.forEach((item, index) => {
+                item.classList.toggle("active", index <= currentStep);
             });
-            progressBar.style.width = ((currentStep) / (circles.length - 1)) * 100 + "%";
 
+            // Update the width of the progress bar
+            progressBar.style.width = ((currentStep) / (progressItems.length - 1)) * 100 + "%";
             prevBtn.disabled = currentStep === 0;
             nextBtn.disabled = false;
         }
 
-
+        // Submit the form
         function submitForm() {
             document.getElementById("jobApplicationForm").style.display = "none";
-            document.querySelectorAll(".progress").style.display = "none";
+            document.querySelector(".progress").style.display = "none";
             document.getElementById("message").style.display = "block";
+            /*document.getElementById("jobApplicationForm").reset();
+            currentStep = 0;*/
+
         }
 
-        document.getElementById("documents").onchange = function () {
-            const maxFiles = 4;
-            if (this.files.length > maxFiles) {
-                alert(`You can only upload a maximum of ${maxFiles} files.`);
-                this.value = "";
+        // Initialize the form
+        /*updateForm();
+
+        // Event listeners for navigation buttons
+        nextBtn.addEventListener("click", () => changeStep(1));
+        prevBtn.addEventListener("click", () => changeStep(-1));*/
+
+
+        function validateFiles() {
+            const fileInput = document.getElementById("documents");
+            const files = fileInput.files;
+            const maxFiles = 4; // Maximum number of files allowed
+            const maxSizeInBytes = 2 * 1024 * 1024; // Maximum size (2 MB per file)
+            let errorMessage = ""; // Reset error message
+
+            // Validate the number of files
+            if (files.length > maxFiles) {
+                errorMessage = `You can upload a maximum of ${maxFiles} files.`;
             }
-        };
+
+            if (files.length === 0) {
+                errorMessage = "Please select at least one file to upload.";
+            }
+
+            // Validate the size of each file
+            for (let i = 0; i < files.length; i++) {
+                if (files[i].size > maxSizeInBytes) {
+                    errorMessage = `File "${files[i].name}" exceeds the 2 MB size limit.`;
+                    break; // Stop checking once an invalid file is found
+                }
+            }
+
+            // Display error or success message
+            const errorDiv = document.getElementById("errorMessage");
+            if (errorMessage) {
+                errorDiv.textContent = errorMessage;
+                errorDiv.style.display = "block"; // Make sure the message is visible
+                fileInput.value = ""; // Clear the file input to allow re-selection
+            } else {
+                errorDiv.textContent = "";
+                alert("Files uploaded successfully!");
+            }
+        }
+
+
 
         updateForm();
 
@@ -533,21 +635,21 @@
             newField.innerHTML = `
             <div class="form-row">
                 <div class="input-data">
-                   <input type="text" required>
+                   <input type="text" placeholder="Degree" required>
                    <div class="underline"></div>
-                   <label for="">Degree</label>
+                   <label for=""></label>
                 </div>
                 <div class="input-data">
-                    <input type="text" required>
+                    <input type="text" placeholder="Graduation Year" required>
                     <div class="underline"></div>
-                    <label for="">Graduation Year</label>
+                    <label for=""></label>
                 </div>
             </div>
             <div class="form-row">
                 <div class="input-data">
-                    <input type="text" required>
+                    <input type="text" placeholder="Major" required>
                     <div class="underline"></div>
-                    <label for="">Major</label>
+                    <label for=""></label>
                 </div>
             </div>
         `;
@@ -562,19 +664,19 @@
             newField.innerHTML = `
             <div class="form-row">
                 <div class="input-data">
-                   <input type="text" required>
+                   <input type="text" placeholder="Position" required>
                    <div class="underline"></div>
-                   <label for="">Position</label>
+                   <label for=""></label>
                 </div>
                 <div class="input-data">
-                    <input type="text" required>
+                    <input type="text" placeholder="Company" required>
                     <div class="underline"></div>
-                    <label for="">Company</label>
+                    <label for=""></label>
                 </div>
                 <div class="input-data">
-                    <input type="text" required>
+                    <input type="text" placeholder="Years of Experience" required>
                     <div class="underline"></div>
-                    <label for="">Years of Experience</label>
+                    <label for=""></label>
                 </div>
             </div>
         `;
